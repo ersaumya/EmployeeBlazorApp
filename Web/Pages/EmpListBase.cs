@@ -25,7 +25,7 @@ namespace Web.Pages
                 Email = "ersaumyarout@gmail.com",
                 DoB = new DateTime(1990, 10, 2),
                 Gender = Gender.Male,
-                Dept = new Dept { DeptId = 1, DeptName = "IT" },
+                DeptId = 1,
                 Photo = "images/pic1.jpg"
             };
             Employee e2 = new Employee
@@ -36,7 +36,7 @@ namespace Web.Pages
                 Email = "mahat@gmail.com",
                 DoB = new DateTime(1997, 10, 5),
                 Gender = Gender.Male,
-                Dept = new Dept { DeptId = 2, DeptName = "HR" },
+                DeptId = 2,
                 Photo = "images/pic2.jpg"
             };
             Employees = new List<Employee> { e1, e2 };

@@ -12,7 +12,7 @@ namespace DomainModels
         public string Email { get; set; }
         public DateTime DoB { get; set; }
         public Gender Gender { get; set; }
-        public Dept Dept { get; set; }
+        public int DeptId { get; set; }
         public string Photo { get; set; }
     }
 }
