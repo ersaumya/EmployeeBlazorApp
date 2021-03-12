@@ -10,10 +10,9 @@ namespace Web.Pages
     public class EmpListBase:ComponentBase
     {
         public IEnumerable<Employee> Employees { get; set; }
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            LoadEmployee();
-            return base.OnInitializedAsync();
+            await Task.Run(LoadEmployee);
         }
 
         private void LoadEmployee()
