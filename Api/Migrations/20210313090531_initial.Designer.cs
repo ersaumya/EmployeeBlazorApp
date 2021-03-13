@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210312175302_initial")]
+    [Migration("20210313090531_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,18 +75,22 @@ namespace Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeId");
+
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Employees");
 
@@ -100,7 +104,7 @@ namespace Api.Migrations
                             FirstName = "John",
                             Gender = 0,
                             LastName = "Hastings",
-                            Photo = "images/pic1.png"
+                            Photo = "images/pic1.jpg"
                         },
                         new
                         {
@@ -122,7 +126,7 @@ namespace Api.Migrations
                             FirstName = "Mary",
                             Gender = 1,
                             LastName = "Smith",
-                            Photo = "images/mary.png"
+                            Photo = "images/pic1.jpg"
                         },
                         new
                         {
@@ -133,8 +137,19 @@ namespace Api.Migrations
                             FirstName = "Sara",
                             Gender = 1,
                             LastName = "Longway",
-                            Photo = "images/pic1.png"
+                            Photo = "images/pic1.jpg"
                         });
+                });
+
+            modelBuilder.Entity("DomainModels.Employee", b =>
+                {
+                    b.HasOne("DomainModels.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
                 });
 #pragma warning restore 612, 618
         }

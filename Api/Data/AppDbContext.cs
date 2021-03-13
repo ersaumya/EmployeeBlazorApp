@@ -41,7 +41,7 @@ namespace Api.Data
                 DoB = new DateTime(1980, 10, 5),
                 Gender = Gender.Male,
                 DepartmentId = 1,
-                Photo = "images/pic1.png"
+                Photo = "images/pic1.jpg"
             });
 
             modelBuilder.Entity<Employee>().HasData(new Employee
@@ -65,7 +65,7 @@ namespace Api.Data
                 DoB = new DateTime(1979, 11, 11),
                 Gender = Gender.Female,
                 DepartmentId = 1,
-                Photo = "images/mary.png"
+                Photo = "images/pic1.jpg"
             });
 
             modelBuilder.Entity<Employee>().HasData(new Employee
@@ -77,7 +77,7 @@ namespace Api.Data
                 DoB = new DateTime(1982, 9, 23),
                 Gender = Gender.Female,
                 DepartmentId = 3,
-                Photo = "images/pic1.png"
+                Photo = "images/pic1.jpg"
             });
         }
     }
