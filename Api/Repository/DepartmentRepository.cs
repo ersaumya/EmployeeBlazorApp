@@ -1,5 +1,6 @@
 ﻿using Api.Data;
 using DomainModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +17,15 @@ namespace Api.Repository
         }
 
 
-        public Department GetDepartment(int departmentId)
+        public async Task<Department> GetDepartment(int departmentId)
         {
-            return _appDbContext.Departments
-                 .FirstOrDefault(d => d.DepartmentId == departmentId);
+            return await _appDbContext.Departments
+                .FirstOrDefaultAsync(d => d.DepartmentId == departmentId);
         }
 
-        public IEnumerable<Department> GetDepartments()
+        public async Task<IEnumerable<Department>> GetDepartments()
         {
-            return _appDbContext.Departments;
+            return await _appDbContext.Departments.ToListAsync();
         }
     }
 }

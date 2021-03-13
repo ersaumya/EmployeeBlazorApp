@@ -32,6 +32,10 @@ namespace Web
             {
                 client.BaseAddress = new Uri("https://localhost:44310/");
             });
+            services.AddHttpClient<IDepartmentService, DepartmentService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44310/");
+            });
 
         }
 
