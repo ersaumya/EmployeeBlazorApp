@@ -59,6 +59,12 @@ namespace Api.Controllers
             {
                 if (employee == null)
                     return BadRequest();
+                var emp = await _employeeRepository.GetEmployeeByEmail(employee.Email);
+                if(emp != null)
+                {
+                    ModelState.AddModelError("email", "Employee email is already in use");
+                    return BadRequest(ModelState);
+                }
 
                 var createdEmployee = await _employeeRepository.AddEmployee(employee);
 
