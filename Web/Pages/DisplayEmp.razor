@@ -4,6 +4,7 @@
 <div class="card m-3" style="min-width:18rem;max-width:30.5%;">
     <img src="@Employee.Photo" class="card-img-top imagesize" alt="...">
     <div class="card-body">
+        <input type="checkbox" @onchange="CheckBoxChanged"/>
         <h5 class="card-title">@Employee.FirstName @Employee.LastName</h5>
         <p class="card-text">@Employee.Email</p>
     </div>

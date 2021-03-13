@@ -2,7 +2,7 @@
 @inherits EmpListBase
 
 
-<h3>Employee List</h3>
+<h3>Selected Employee Count-@SelectedEmployeeCount</h3>
 <input type="checkbox" id="showFooter" @bind="ShowFooter"/>
 <label for="showFooter">Show Footer</label>
 @if (Employees == null)
@@ -15,7 +15,7 @@ else
 
         @foreach (var employee in Employees)
         {
-           <DisplayEmp Employee="employee" ShowFooter="ShowFooter"></DisplayEmp>
+           <DisplayEmp Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged"></DisplayEmp>
         }
 
     </div>
