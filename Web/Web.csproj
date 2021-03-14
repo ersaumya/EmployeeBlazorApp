@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonUtility\CommonUtility.csproj" />
     <ProjectReference Include="..\DomainModels\DomainModels.csproj" />
   </ItemGroup>
 

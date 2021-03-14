@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Web.Pages
+namespace CommonUtility.Components
 {
     public class CustomInputSelect<TValue>: InputSelect<TValue>
     {
