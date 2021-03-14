@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainModels.CustomValidators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -17,6 +18,7 @@ namespace DomainModels
         public string LastName { get; set; }
 
         [EmailAddress]
+        [EmailDomainValidator(AllowedDomain ="soum.com",ErrorMessage ="soum.com is allowed only")]
         public string Email { get; set; }
         public DateTime DoB { get; set; }
         public Gender Gender { get; set; }
