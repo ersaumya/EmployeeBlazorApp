@@ -24,6 +24,7 @@ namespace DomainModels
         public Gender Gender { get; set; }
         public int DepartmentId { get; set; }
         public string Photo { get; set; }
+        
         public Department Department { get; set; }
     }
 }

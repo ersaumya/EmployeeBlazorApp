@@ -30,6 +30,7 @@ namespace Web.Models
         [Required]
         public int? DepartmentId { get; set; }
         public string Photo { get; set; }
-        public Department Department { get; set; }
+        [ValidateComplexType]
+        public Department Department { get; set; } = new Department();
     }
 }
