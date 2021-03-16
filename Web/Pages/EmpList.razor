@@ -15,7 +15,7 @@ else
 
         @foreach (var employee in Employees)
         {
-           <DisplayEmp Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged"></DisplayEmp>
+           <DisplayEmp Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged" OnEmployeeDeleted="EmployeeDeleted"></DisplayEmp>
         }
 
     </div>
