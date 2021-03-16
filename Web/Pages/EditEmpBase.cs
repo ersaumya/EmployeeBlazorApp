@@ -1,4 +1,5 @@
-﻿using DomainModels;
+﻿using AutoMapper;
+using DomainModels;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -23,21 +24,17 @@ namespace Web.Pages
 
         [Parameter]
         public string Id { get; set; }
+
+        [Inject]
+
+        public IMapper Mapper { get; set; }
         protected async override Task OnInitializedAsync()
         {
             Employee = await EmployeeService.GetEmployee(int.Parse(Id));
             Departments = (await DepartmentService.GetDepartments()).ToList();
+            Mapper.Map(Employee, EditEmployeeModel);
 
-            EditEmployeeModel.EmployeeId = Employee.EmployeeId;
-            EditEmployeeModel.FirstName = Employee.FirstName;
-            EditEmployeeModel.LastName = Employee.LastName;
-            EditEmployeeModel.Email = Employee.Email;
-            EditEmployeeModel.ConfirmEmail = Employee.Email;
-            EditEmployeeModel.DoB = Employee.DoB;
-            EditEmployeeModel.Gender = Employee.Gender;
-            EditEmployeeModel.Photo = Employee.Photo;
-            EditEmployeeModel.DepartmentId = Employee.DepartmentId;
-            EditEmployeeModel.Department = Employee.Department;
+            
 
         }
 
