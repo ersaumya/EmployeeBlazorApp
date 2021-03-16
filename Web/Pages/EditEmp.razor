@@ -84,6 +84,11 @@
             <InputDate @bind-Value="EditEmployeeModel.DoB" class="form-control"></InputDate>
         </div>
     </div>
-    
+
     <button class="btn btn-primary" type="submit">Submit</button>
+    @if (EditEmployeeModel.EmployeeId > 0)
+    {
+        <button class="btn btn-danger" type="submit" @onclick="Delete_Click">Delete</button>
+    }
+    
 </EditForm>

@@ -72,5 +72,11 @@ namespace Web.Pages
                 NavigationManager.NavigateTo("/");
             }
         }
+
+        protected async Task Delete_Click()
+        {
+            await EmployeeService.DeleteEmployee(Employee.EmployeeId);
+            NavigationManager.NavigateTo("/");
+        }
     }
 }
