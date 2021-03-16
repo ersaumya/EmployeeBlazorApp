@@ -1,7 +1,9 @@
-﻿@page "/editemployee/{id}"
+﻿@page "/editemployee"
+@page "/editemployee/{id}"
+
+
 @inherits EditEmpBase
-@using CommonUtility.Components
-@using DomainModels
+
 
 <EditForm Model="@EditEmployeeModel" OnValidSubmit="HandleValidSubmit">
     <ObjectGraphDataAnnotationsValidator />
@@ -82,14 +84,6 @@
             <InputDate @bind-Value="EditEmployeeModel.DoB" class="form-control"></InputDate>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="departmentName" class="col-sm-2 col-form-label">
-            Department Name
-        </label>
-        <div id="departmentName" class="col-sm-10">
-            <InputText @bind-Value="EditEmployeeModel.Department.DepartmentName" class="form-control"/>
-            <ValidationMessage For="@(()=>EditEmployeeModel.Department.DepartmentName)" />
-        </div>
-    </div>
+    
     <button class="btn btn-primary" type="submit">Submit</button>
 </EditForm>

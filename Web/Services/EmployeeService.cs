@@ -17,6 +17,11 @@ namespace Web.Services
             this._httpClient = httpClient;
         }
 
+        public async Task<Employee> CreateEmployee(Employee newEmployee)
+        {
+            return await _httpClient.PostJsonAsync<Employee>("api/employees", newEmployee);
+        }
+
         public async Task<Employee> GetEmployee(int id)
         {
             return await _httpClient.GetJsonAsync<Employee>($"api/employees/{id}");

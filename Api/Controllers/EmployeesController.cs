@@ -57,8 +57,11 @@ namespace Api.Controllers
         {
             try
             {
-                if (employee == null)
+                if (employee == null) 
+                {
                     return BadRequest();
+                }
+                    
                 var emp = await _employeeRepository.GetEmployeeByEmail(employee.Email);
                 if(emp != null)
                 {
