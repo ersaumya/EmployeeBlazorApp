@@ -16,6 +16,7 @@ namespace Web.Pages
         public IEmployeeService EmployeeService { get; set; }
         [Inject]
         public IDepartmentService DepartmentService { get; set; }
+        public string PageTitle { get; set; }
 
         public List<Department> Departments { get; set; } = new List<Department>();
 
@@ -36,10 +37,12 @@ namespace Web.Pages
             int.TryParse(Id, out int employeeId);
             if (employeeId != 0)
             {
+                PageTitle = "Edit Employee";
                 Employee = await EmployeeService.GetEmployee(int.Parse(Id));
             }
             else
             {
+                PageTitle = "Create Employee";
                 Employee = new Employee
                 {
                     DepartmentId = 1,
