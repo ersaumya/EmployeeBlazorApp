@@ -1,4 +1,5 @@
-﻿using DomainModels;
+﻿using CommonUtility.Components;
+using DomainModels;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -33,11 +34,26 @@ namespace Web.Pages
             await OnEmployeeSelection.InvokeAsync((bool)e.Value);
         }
 
-        protected async Task Click_Delete()
+        protected ConfirmBase DeleteConfirmation { get; set; }
+        protected void Click_Delete()
         {
-            await EmployeeService.DeleteEmployee(Employee.EmployeeId);
-            await OnEmployeeDeleted.InvokeAsync(Employee.EmployeeId);
-            //NavigationManager.NavigateTo("/", true);
+            DeleteConfirmation.Show();
         }
+
+        protected async Task ConfirmDelete_Click(bool deleteConfirmed)
+        {
+            if (deleteConfirmed)
+            {
+                await EmployeeService.DeleteEmployee(Employee.EmployeeId);
+                await OnEmployeeDeleted.InvokeAsync(Employee.EmployeeId);
+            }
+        }
+
+        //protected async Task Click_Delete()
+        //{
+        //    await EmployeeService.DeleteEmployee(Employee.EmployeeId);
+        //    await OnEmployeeDeleted.InvokeAsync(Employee.EmployeeId);
+        //    //NavigationManager.NavigateTo("/", true);
+        //}
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CommonUtility.Components;
 using DomainModels;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -73,10 +74,26 @@ namespace Web.Pages
             }
         }
 
-        protected async Task Delete_Click()
+        //protected async Task Delete_Click()
+        //{
+        //    await EmployeeService.DeleteEmployee(Employee.EmployeeId);
+        //    NavigationManager.NavigateTo("/");
+        //}
+
+        protected ConfirmBase DeleteConfirmation { get; set; }
+
+        protected void Click_Delete()
         {
-            await EmployeeService.DeleteEmployee(Employee.EmployeeId);
-            NavigationManager.NavigateTo("/");
+            DeleteConfirmation.Show();
+        }
+
+        protected async Task ConfirmDelete_Click(bool deleteConfirmed)
+        {
+            if (deleteConfirmed)
+            {
+                await EmployeeService.DeleteEmployee(Employee.EmployeeId);
+                NavigationManager.NavigateTo("/");
+            }
         }
     }
 }

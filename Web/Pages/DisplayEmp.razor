@@ -2,20 +2,22 @@
 
 
 <div class="card m-3" style="min-width:18rem;max-width:30.5%;">
-    <img src="@Employee.Photo" class="card-img-top imagesize" alt="...">
-    <div class="card-body">
-        <input type="checkbox" @onchange="CheckBoxChanged"/>
-        <h5 class="card-title">@Employee.FirstName @Employee.LastName</h5>
-        <p class="card-text">@Employee.Email</p>
+    <div class="card-header">
+        <input type="checkbox" @onchange="CheckBoxChanged" />
+        <h3>@Employee.FirstName @Employee.LastName</h3>
     </div>
+    <img src="@Employee.Photo" class="card-img-top imagesize" alt="...">
+   
     @if (ShowFooter)
     {
         <div class="card-footer text-center">
             <a href="@($"employeedetails/{Employee.EmployeeId}")" class="btn btn-primary m-1">View</a>
             <a href="@($"editemployee/{Employee.EmployeeId}")" class="btn btn-primary m-1">Edit</a>
             <button type="button" class="btn btn-danger m-1" @onclick="Click_Delete">Delete</button>
-            
+
         </div>
     }
 </div>
+<Confirm ConfirmationChanged="ConfirmDelete_Click" @ref="DeleteConfirmation"
+         ConfirmationMessage=@($"Are you sure you want to delete\"{Employee.FirstName}\"")></Confirm>
 
